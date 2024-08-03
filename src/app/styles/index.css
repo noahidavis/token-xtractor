@@ -1,3 +1,120 @@
-.plugin-title {
-    color: #ff0000
+/* src/styles/index.css */
+
+#collections {
+  width: 100%;
+  height: 150px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+
+#collections option {
+  cursor: pointer;
+}
+
+#settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+}
+
+#left-pane {
+  width: 45%;
+}
+
+#right-pane {
+  width: 55%;
+  border-left: 1px solid #ddd;
+}
+
+#container {
+  display: flex;
+  height: 100%;
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+#tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  min-height: 40px;
+}
+
+
+.tab {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+.tab.active {
+  background-color: #eee;
+}
+
+#tab-contents {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  white-space: pre-wrap;
+}
+
+#help-button {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  background-color: #007aff;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#help-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#help-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+#help-modal-close {
+  float: right;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 20px;
 }

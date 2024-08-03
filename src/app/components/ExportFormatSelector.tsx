@@ -1,0 +1,36 @@
+import React from 'react';
+import { ExportFormat } from '../../types/tokenTypes';
+
+interface ExportFormatSelectorProps {
+  format: ExportFormat;
+  setFormat: React.Dispatch<React.SetStateAction<ExportFormat>>;
+}
+
+const ExportFormatSelector: React.FC<ExportFormatSelectorProps> = ({ format, setFormat }) => {
+  return (
+    <p>
+      Export Format:
+      <input
+        type="radio"
+        id="json"
+        name="format"
+        value="json"
+        checked={format === 'json'}
+        onChange={e => setFormat(e.target.value as ExportFormat)}
+      />
+      <label htmlFor="json">JSON</label>
+      <input
+        type="radio"
+        id="css"
+        name="format"
+        value="css"
+        checked={format === 'css'}
+        onChange={e => setFormat(e.target.value as ExportFormat)}
+      />
+      <label htmlFor="css">CSS</label>
+    </p>
+  );
+};
+
+export default ExportFormatSelector;
+
