@@ -1,0 +1,14 @@
+# Node
+*.log
+*.log.*
+node_modules/
+
+out/
+dist/
+code.js
+
+# MacOS
+.DS_Store
+
+# VSCode
+.vscode/

@@ -1,0 +1,67 @@
+{
+  "name": "figma-plugin-react-2024",
+  "version": "1.0.0",
+  "description": "A modern, lightweight template for creating Custom UI Figma plugins using React for the UI component library.",
+  "main": "code.js",
+  "scripts": {
+    "build": "webpack --mode=production",
+    "lint": "eslint --ext .ts,.tsx --ignore-pattern node_modules .",
+    "lint:fix": "eslint --ext .ts,.tsx --ignore-pattern node_modules --fix .",
+    "build:watch": "webpack --mode=development --watch"
+  },
+  "author": {
+    "name": "Noah I. Davis",
+    "email": "noahdavis35@att.net",
+    "url": "https://www.noahidavis.com"
+  },
+  "license": "",
+  "devDependencies": {
+    "@figma/eslint-plugin-figma-plugins": "*",
+    "@figma/plugin-typings": "*",
+    "@types/react": "^18.3.3",
+    "@types/react-dev-utils": "^9.0.15",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "css-loader": "^7.1.2",
+    "eslint": "^8.54.0",
+    "html-webpack-plugin": "^5.6.0",
+    "react-dev-utils": "^12.0.1",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.93.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@figma/figma-plugins/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "ignorePatterns": [
+      "webpack.config.js",
+      "dist/**/*.js"
+    ],
+    "root": true,
+    "rules": {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_",
+          "caughtErrorsIgnorePattern": "^_"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
