@@ -1,6 +1,6 @@
-import { VariableValue, VariableAlias, CaseStyle, ExportFormat } from '../../types/tokenTypes';
+import { VariableValue, VariableResolvedDataType, VariableAlias, CaseStyle, ExportFormat } from '../../types/tokenTypes';
 
-export async function resolveValue(value: VariableValue, resolvedType: string): Promise<string | number> {
+export async function resolveValue(value: VariableValue, resolvedType: VariableResolvedDataType): Promise<string | number> {
     if ((value as VariableAlias).type === 'VARIABLE_ALIAS') {
         let currentValue = value as VariableAlias;
         while (currentValue.type === 'VARIABLE_ALIAS') {

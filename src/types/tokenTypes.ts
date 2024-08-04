@@ -11,7 +11,7 @@ export interface ExtractTokensMessage {
 
 export interface VariableToken {
     name: string;
-    value: VariableValue;
+    value: string | number;
     collection: string;
 }
 

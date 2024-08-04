@@ -13,6 +13,7 @@ if (figma.editorType === 'figma') {
 
                 const tokens = await extractTokens(caseStyle, singleFile, collections, format);
                 const files = prepareFiles(tokens, singleFile, format);
+                console.log("Files sent from controller for preview:", "\n", files);
                 figma.ui.postMessage({ type: 'update-preview', files });
 
             } else if (msg.type === 'trigger-download') {
