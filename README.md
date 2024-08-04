@@ -10,7 +10,7 @@ By [Noah I. Davis](https://www.noahidavis.com)
 - Fixed variable collection names not populating on plugin start (added delay)
 - Fixed CollectionSelector select multiple functionality
 - Selected tokens + tabs appear in preview pane in JSON format only
-- Zip folder created + system download dialog opening
+- Zip folder created + download dialog
 
 ### Need to Do
 1. Displaying all tokens on plugin run
