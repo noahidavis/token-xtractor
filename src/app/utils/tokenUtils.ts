@@ -1,25 +1,10 @@
-// import JSZip from 'jszip';
 import { VariableToken, FileContent, CaseStyle, ExportFormat, VariableCollection } from '../../types/tokenTypes';
 import { resolveValue, formatName, convertToCSSVariables, assignNestedValue } from './valueUtils';
 
-// export async function createZip(files: { name: string, content: string }[]): Promise<Uint8Array> {
-//     const zip = new JSZip();
-//     const folder = zip.folder('token-x-tractor-exports');
-//     if (!folder) {
-//         throw new Error('Failed to create folder in zip');
-//     }
-//     files.forEach(file => {
-//         folder.file(file.name.replace('token-x-tractor-exports/', ''), file.content);
-//     });
-//     const content = await zip.generateAsync({ type: 'uint8array' });
-//     return content;
-// }
 
 export async function extractTokens(caseStyle: CaseStyle, singleFile: boolean, collections: string[], format: ExportFormat): Promise<VariableToken[]> {
-    console.log('[tokenUtils.ts] extractTokens() called');
     const allCollections: VariableCollection[] = await figma.variables.getLocalVariableCollectionsAsync();
     const selectedCollections = collections.indexOf('all') > -1 ? allCollections : allCollections.filter(collection => collections.indexOf(collection.id) > -1);
-    // console.log("[tokenUtils.ts - 22] Selected collections received by extractTokens(): \n", collections);
     let tokens: VariableToken[] = [];
 
     for (const collection of selectedCollections) {

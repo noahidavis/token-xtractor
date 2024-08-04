@@ -6,7 +6,6 @@ if (figma.editorType === 'figma') {
   figma.showUI(__html__, { width: 700, height: 600 });
 
   figma.ui.onmessage = async (msg: ExtractTokensMessage) => {
-    console.log('Message received in controller:', msg);
     try {
       if (msg.type === 'extract-tokens') {
         const { caseStyle, singleFile, format, collections } = msg.data!;
@@ -32,7 +31,7 @@ if (figma.editorType === 'figma') {
   };
 
   figma.on('run', async () => {
-    console.log('Plugin run triggered');
+    console.log('tokenXtractor started . . .');
     try {
       await loadCollectionsWithDelay();
     } catch (error) {

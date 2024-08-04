@@ -18,7 +18,6 @@ const App: React.FC = () => {
 
     React.useEffect(() => {
         window.onmessage = (event) => {
-            // console.log('Message received in UI:', event.data.pluginMessage);
             const { type, collections, files, zipFile } = event.data.pluginMessage || {};
             if (type === 'update-preview' && files) {
                 setFiles(files);

@@ -1,4 +1,3 @@
-// src/types/types.ts
 export interface ExtractTokensMessage {
     type: 'extract-tokens' | 'trigger-download' | 'cancel' | 'refresh-collections';
     data?: {
