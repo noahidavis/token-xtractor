@@ -46,6 +46,13 @@ if (figma.editorType === 'figma') {
     });
 }
 
+
+async function loadCollectionsWithDelay() {
+    setTimeout(async () => {
+        await loadCollections();
+    }, 500); // Delay of 500 milliseconds
+}
+
 async function loadCollections() {
     try {
         const collections: VariableCollection[] = await figma.variables.getLocalVariableCollectionsAsync();
@@ -54,10 +61,4 @@ async function loadCollections() {
     } catch (error) {
         console.error('Error loading collections:', error);
     }
-}
-
-async function loadCollectionsWithDelay() {
-    setTimeout(async () => {
-        await loadCollections();
-    }, 500); // Delay of 500 milliseconds
 }

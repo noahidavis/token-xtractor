@@ -9,10 +9,12 @@ By [Noah I. Davis](https://www.noahidavis.com)
 - Basic UI layout ported over from old project
 - Fixed variable collection names not populating on plugin start (added delay)
 - Fixed CollectionSelector select multiple functionality
+- Selected tokens + tabs appear in preview pane in JSON format only
 
 ### Need to Do
-- Preview pane (displaying outputs + tabs)
-- Help modal (content + layout) + Fix help modal button positioning
-- Zip creation + download
-- Overall styling / layout
-- Debugging
+1. Displaying all tokens on plugin run
+2. Fix case style dropdown, single file checkbox, and JSON/CSS radio--changes not being reflected in preview pane
+3. Zip creation + download when 'Extract Tokens' button pressed
+4. Help modal (content + layout) + Fix help modal button positioning
+5. Overall styling / layout
+6. Debugging
