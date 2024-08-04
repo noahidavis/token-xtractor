@@ -1,20 +1,19 @@
-import JSZip from 'jszip';
+// import JSZip from 'jszip';
 import { VariableToken, FileContent, CaseStyle, ExportFormat, VariableCollection } from '../../types/tokenTypes';
 import { resolveValue, formatName, convertToCSSVariables, assignNestedValue } from './valueUtils';
 
-export async function createZip(files: FileContent[]): Promise<Blob> {
-    const zip = new JSZip();
-    const folder = zip.folder('token-x-tractor-exports');
-    if (folder) {
-        files.forEach(file => {
-            folder.file(file.name.replace('token-x-tractor-exports/', ''), file.content);
-        });
-        const content = await zip.generateAsync({ type: 'blob' });
-        return content;
-    } else {
-        throw new Error('Failed to create zip folder');
-    }
-}
+// export async function createZip(files: { name: string, content: string }[]): Promise<Uint8Array> {
+//     const zip = new JSZip();
+//     const folder = zip.folder('token-x-tractor-exports');
+//     if (!folder) {
+//         throw new Error('Failed to create folder in zip');
+//     }
+//     files.forEach(file => {
+//         folder.file(file.name.replace('token-x-tractor-exports/', ''), file.content);
+//     });
+//     const content = await zip.generateAsync({ type: 'uint8array' });
+//     return content;
+// }
 
 export async function extractTokens(caseStyle: CaseStyle, singleFile: boolean, collections: string[], format: ExportFormat): Promise<VariableToken[]> {
     console.log('[tokenUtils.ts] extractTokens() called');

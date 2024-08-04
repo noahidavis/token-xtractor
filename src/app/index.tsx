@@ -4,6 +4,7 @@ import Settings from './components/Settings';
 import Preview from './components/Preview';
 import HelpButton from './components/HelpButton';
 import HelpModal from './components/HelpModal';
+import { downloadZip } from './utils/zipUtils';
 import './styles/index.css';
 
 const App: React.FC = () => {
@@ -18,14 +19,18 @@ const App: React.FC = () => {
     React.useEffect(() => {
         window.onmessage = (event) => {
             // console.log('Message received in UI:', event.data.pluginMessage);
-            const { type, collections, files } = event.data.pluginMessage || {};
+            const { type, collections, files, zipFile } = event.data.pluginMessage || {};
             if (type === 'update-preview' && files) {
                 setFiles(files);
             } else if (type === 'load-collections' && collections) {
                 setCollections(collections);
+            } else if (type == 'download-zip' && zipFile) {
+                const zipFileArray = new Uint8Array(zipFile)
+                downloadZip(zipFileArray, 'exports.zip');
             }
         };
     }, []);
+
 
     return (
         <div id="container">
@@ -48,6 +53,7 @@ const App: React.FC = () => {
             </div>
             <HelpButton onClick={() => setShowModal(true)} />
             <HelpModal showModal={showModal} setShowModal={setShowModal} />
+            <a id="download-link" style={{display: 'none'}}></a>
         </div>
     );
 };
