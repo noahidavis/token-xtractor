@@ -8,10 +8,11 @@ if (figma.editorType === 'figma') {
         console.log('Message received in controller:', msg);
         try {
             if (msg.type === 'extract-tokens') {
-                const { caseStyle, singleFile, format, collections } = msg.data || {};
-                if (!caseStyle || !singleFile || !format || !collections) return;
-
+                const { caseStyle, singleFile, format, collections } = msg.data!;
+                // if (!caseStyle || !singleFile || !format || !collections) return;
+                // console.log("Extract Tokens payload received by controller (selected collections): \n", msg.data?.collections);
                 const tokens = await extractTokens(caseStyle, singleFile, collections, format);
+                console.log("Processed tokens from controller: \n", tokens);
                 const files = prepareFiles(tokens, singleFile, format);
                 console.log("Files sent from controller for preview:", "\n", files);
                 figma.ui.postMessage({ type: 'update-preview', files });

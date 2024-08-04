@@ -1,4 +1,25 @@
 /* src/styles/index.css */
+#container {
+  display: flex;
+  height: 100%;
+}
+
+#left-pane {
+  width: 45%;
+}
+
+#right-pane {
+  width: 55%;
+  border-left: 1px solid #ddd;
+  overflow-y: scroll;
+}
+
+#settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+}
 
 #collections {
   width: 100%;
@@ -11,32 +32,16 @@
   cursor: pointer;
 }
 
-#settings {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: auto;
-}
-
-#left-pane {
-  width: 45%;
-}
-
-#right-pane {
-  width: 55%;
-  border-left: 1px solid #ddd;
-}
-
-#container {
-  display: flex;
-  height: 100%;
-}
-
 #buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
 }
+
+/* #preview {
+  height: auto;
+  overflow-y: scroll
+} */
 
 #tabs {
   display: flex;
@@ -118,3 +123,5 @@
   color: #aaa;
   font-size: 20px;
 }
+
+

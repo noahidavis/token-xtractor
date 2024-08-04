@@ -17,9 +17,10 @@ export async function createZip(files: FileContent[]): Promise<Blob> {
 }
 
 export async function extractTokens(caseStyle: CaseStyle, singleFile: boolean, collections: string[], format: ExportFormat): Promise<VariableToken[]> {
+    console.log('[tokenUtils.ts] extractTokens() called');
     const allCollections: VariableCollection[] = await figma.variables.getLocalVariableCollectionsAsync();
     const selectedCollections = collections.indexOf('all') > -1 ? allCollections : allCollections.filter(collection => collections.indexOf(collection.id) > -1);
-
+    // console.log("[tokenUtils.ts - 22] Selected collections received by extractTokens(): \n", collections);
     let tokens: VariableToken[] = [];
 
     for (const collection of selectedCollections) {

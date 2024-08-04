@@ -50,7 +50,7 @@ const Settings: React.FC<SettingsProps> = ({
                     setSelectedCollections={setSelectedCollections}
                 />
             </div>
-            <Buttons />
+            <Buttons caseStyle={caseStyle} singleFile={singleFile} format={format} selectedCollections={selectedCollections} />
         </div>
     );
 };

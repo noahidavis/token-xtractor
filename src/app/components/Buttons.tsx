@@ -1,8 +1,24 @@
 import React from 'react';
 
-const Buttons: React.FC = () => {
+interface ButtonProps {
+    caseStyle: string;
+    singleFile: boolean;
+    format: string;
+    selectedCollections: string[];
+}
+
+const Buttons: React.FC<ButtonProps> = ({ caseStyle, singleFile, format, selectedCollections }) => {
     const handleExtract = () => {
-        parent.postMessage({ pluginMessage: { type: 'extract-tokens' } }, '*');
+        parent.postMessage({ 
+            pluginMessage: { 
+                type: 'extract-tokens',
+                data: {
+                    caseStyle,
+                    singleFile,
+                    format,
+                    collections: selectedCollections
+                }
+            } }, '*');
     };
 
     const handleCancel = () => {
