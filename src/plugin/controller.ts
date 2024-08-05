@@ -1,6 +1,13 @@
 import { ExtractTokensMessage, VariableCollection } from '../types/tokenTypes';
 import { extractTokens, prepareFiles } from '../app/utils/tokenUtils';
 import { createZip } from '../app/utils/zipUtils';
+// Testing Jotai outside React
+import myStore from '../jotai/store';
+import * as atoms from '../jotai/atoms'
+
+// Testing Jotai Outside React
+const caseStyleState = myStore.get(atoms.caseStyleAtom);
+
 
 if (figma.editorType === 'figma') {
   figma.showUI(__html__, { width: 700, height: 600 });
@@ -34,6 +41,8 @@ if (figma.editorType === 'figma') {
     console.log('tokenXtractor started . . .');
     try {
       await loadCollectionsWithDelay();
+      // Testing Jotai outside React
+      console.log("Jotai in controller.ts test: ", caseStyleState);
     } catch (error) {
       console.error('Error during initial loadCollections:', error);
     }

@@ -6,6 +6,8 @@ import HelpButton from './components/HelpButton';
 import HelpModal from './components/HelpModal';
 import { downloadZip } from './utils/zipUtils';
 import './styles/index.css';
+import { Provider } from 'jotai';
+import myStore from '../jotai/store';
 
 const App: React.FC = () => {
     const [caseStyle, setCaseStyle] = React.useState<string>('kebab');
@@ -61,6 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const entryPoint = document.getElementById('react-entry-point');
     if (entryPoint) {
         const root = createRoot(entryPoint);
-        root.render(<App />);
+        root.render(
+        <Provider store={myStore}>
+            <App />
+        </Provider>
+    );
     }
 });
