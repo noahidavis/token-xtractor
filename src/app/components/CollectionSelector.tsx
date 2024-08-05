@@ -1,32 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useAtom } from 'jotai';
+import { allCollectionsAtom, selectedCollectionsAtom } from '../../jotai/atoms';
 
-interface Collection {
-    id: string;
-    name: string;
-}
-
-interface CollectionSelectorProps {
-    collections: Collection[];
-    selectedCollections: string[];
-    setSelectedCollections: React.Dispatch<React.SetStateAction<string[]>>;
-}
-
-const CollectionSelector: React.FC<CollectionSelectorProps> = ({
-    collections,
-    selectedCollections,
-    setSelectedCollections,
-}) => {
+const CollectionSelector: React.FC = () => {
+    const [allCollections] = useAtom(allCollectionsAtom);
+    const [selectedCollections, setSelectedCollections] = useAtom(selectedCollectionsAtom);
     const [allSelected, setAllSelected] = useState<boolean>(false);
 
     useEffect(() => {
-        if (allSelected) {
-            setSelectedCollections(collections.map((collection) => collection.id));
+        if (allSelected && allCollections) {
+            setSelectedCollections(allCollections.map((collection) => collection.id));
         } else {
             setSelectedCollections([]);
         }
-    }, [allSelected, collections, setSelectedCollections]);
+    }, [allSelected, allCollections, setSelectedCollections]);
 
-    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const handleSelection = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const options = event.target.options;
         const selected: string[] = [];
         for (let i = 0; i < options.length; i++) {
@@ -48,16 +37,21 @@ const CollectionSelector: React.FC<CollectionSelectorProps> = ({
                 id="collections"
                 multiple
                 value={selectedCollections}
-                onChange={handleChange}
+                onChange={handleSelection}
+                style={{ display: 'block', width: '100%', height: '150px' }}
             >
                 <option value="all" onClick={handleAllChange}>
                     {allSelected ? "Deselect All" : "Select All"}
                 </option>
-                {collections.map((collection) => (
-                    <option key={collection.id} value={collection.id}>
-                        {collection.name}
-                    </option>
-                ))}
+                {allCollections == undefined? (
+                    <option disabled>Loading collections...</option>
+                ) : (
+                    allCollections.map((collection) => (
+                        <option key={collection.id} value={collection.id}>
+                            {collection.name}
+                        </option>
+                    ))
+                )}
             </select>
         </div>
     );

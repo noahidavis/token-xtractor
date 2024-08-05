@@ -2,11 +2,11 @@ import { ExtractTokensMessage, VariableCollection } from '../types/tokenTypes';
 import { extractTokens, prepareFiles } from '../app/utils/tokenUtils';
 import { createZip } from '../app/utils/zipUtils';
 // Testing Jotai outside React
-import myStore from '../jotai/store';
-import * as atoms from '../jotai/atoms'
+// import myStore from '../jotai/store';
+// import * as Atoms from '../jotai/atoms'
 
 // Testing Jotai Outside React
-const caseStyleState = myStore.get(atoms.caseStyleAtom);
+// const caseStyleState = myStore.get(atoms.caseStyleAtom);
 
 
 if (figma.editorType === 'figma') {
@@ -42,7 +42,7 @@ if (figma.editorType === 'figma') {
     try {
       await loadCollectionsWithDelay();
       // Testing Jotai outside React
-      console.log("Jotai in controller.ts test: ", caseStyleState);
+      // console.log("Jotai in controller.ts test: ", caseStyleState);
     } catch (error) {
       console.error('Error during initial loadCollections:', error);
     }
@@ -52,7 +52,14 @@ if (figma.editorType === 'figma') {
 async function loadCollections() {
   try {
     const collections: VariableCollection[] = await figma.variables.getLocalVariableCollectionsAsync();
-    figma.ui.postMessage({ type: 'load-collections', collections: collections.map(collection => ({ id: collection.id, name: collection.name })) });
+    const serializedCollections = collections.map(collection => ({
+      id: collection.id,
+      name: collection.name,
+      variableIds: collection.variableIds
+    }))
+    // myStore.set(Atoms.allCollectionsAtom, serializedCollections);
+    // console.log("Collections in Jotai store: ", myStore.get(Atoms.allCollectionsAtom));
+    figma.ui.postMessage({ type: 'collections-loaded', collections: serializedCollections });
   } catch (error) {
     console.error('Error loading collections:', error);
   }

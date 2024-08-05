@@ -6,25 +6,29 @@ import HelpButton from './components/HelpButton';
 import HelpModal from './components/HelpModal';
 import { downloadZip } from './utils/zipUtils';
 import './styles/index.css';
-import { Provider } from 'jotai';
+import { 
+    Provider, 
+    // useSetAtom 
+} from 'jotai';
 import myStore from '../jotai/store';
+import { allCollectionsAtom } from '../jotai/atoms';
 
 const App: React.FC = () => {
-    const [caseStyle, setCaseStyle] = React.useState<string>('kebab');
+    // const [caseStyle, setCaseStyle] = React.useState<string>('kebab');
     const [singleFile, setSingleFile] = React.useState<boolean>(false);
     const [format, setFormat] = React.useState<string>('json');
-    const [collections, setCollections] = React.useState<{ id: string, name: string }[]>([]);
-    const [selectedCollections, setSelectedCollections] = React.useState<string[]>([]);
+    // const setCollectionsAtom = useSetAtom(allCollectionsAtom);
     const [files, setFiles] = React.useState<{ name: string; content: string }[]>([]);
     const [showModal, setShowModal] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         window.onmessage = (event) => {
-            const { type, collections, files, zipFile } = event.data.pluginMessage || {};
+            const { type, files, collections, zipFile } = event.data.pluginMessage || {};
             if (type === 'update-preview' && files) {
                 setFiles(files);
-            } else if (type === 'load-collections' && collections) {
-                setCollections(collections);
+            } else if (type == 'collections-loaded') {
+                console.log("Collections from loadCollection(): ", collections);
+                myStore.set(allCollectionsAtom, collections);
             } else if (type == 'download-zip' && zipFile) {
                 const zipFileArray = new Uint8Array(zipFile)
                 downloadZip(zipFileArray, 'exports.zip');
@@ -38,15 +42,15 @@ const App: React.FC = () => {
             <div id="left-pane">
                 <h2 id="plugin-title">tokenXtractor v2</h2>
                 <Settings
-                    caseStyle={caseStyle}
-                    setCaseStyle={setCaseStyle}
+                    // caseStyle={caseStyle}
+                    // setCaseStyle={setCaseStyle}
                     singleFile={singleFile}
                     setSingleFile={setSingleFile}
                     format={format}
                     setFormat={setFormat}
-                    collections={collections}
-                    selectedCollections={selectedCollections}
-                    setSelectedCollections={setSelectedCollections}
+                    // collections={collections}
+                    // selectedCollections={selectedCollections}
+                    // setSelectedCollections={setSelectedCollections}
                 />
             </div>
             <div id="right-pane">

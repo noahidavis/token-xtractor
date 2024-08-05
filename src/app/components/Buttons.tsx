@@ -1,14 +1,28 @@
 import React from 'react';
+import { 
+  selectedCollectionsAtom,
+  caseStyleAtom 
+} from '../../jotai/atoms';
+import { useAtomValue } from 'jotai';
 
 interface ButtonsProps {
-  caseStyle: string;
+  // caseStyle: string;
   singleFile: boolean;
   format: string;
-  selectedCollections: string[];
+  // selectedCollections: string[];
 }
 
-const Buttons: React.FC<ButtonsProps> = ({ caseStyle, singleFile, format, selectedCollections }) => {
+const Buttons: React.FC<ButtonsProps> = ({ 
+  // caseStyle, 
+  singleFile, 
+  format, 
+  // selectedCollections 
+}) => {
+  const selectedCollections = useAtomValue(selectedCollectionsAtom);
+  const caseStyle = useAtomValue(caseStyleAtom);
+
   const handleExtractTokens = () => {
+    console.log("Collections selected for extraction: ", selectedCollections);
     parent.postMessage({
       pluginMessage: {
         type: 'extract-tokens',

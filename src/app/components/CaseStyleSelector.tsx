@@ -1,12 +1,12 @@
 import React from 'react';
+import { caseStyleAtom } from '../../jotai/atoms';
+import { useAtom } from 'jotai';
 import { CaseStyle } from '../../types/tokenTypes';
 
-interface CaseStyleSelectorProps {
-    caseStyle: CaseStyle;
-    setCaseStyle: React.Dispatch<React.SetStateAction<CaseStyle>>;
-}
 
-const CaseStyleSelector: React.FC<CaseStyleSelectorProps> = ({ caseStyle, setCaseStyle }) => {
+const CaseStyleSelector: React.FC = () => {
+    const [caseStyle, setCaseStyle] = useAtom(caseStyleAtom);
+
     return (
         <div>
             <label>Case Style:</label>

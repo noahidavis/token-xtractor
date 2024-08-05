@@ -44,6 +44,14 @@ export interface VariableAlias {
 
 export interface VariableCollection {
     id: string;
+    // defaultModeId: string;
+    // hiddenFromPublishing: boolean;
+    // key: string;
+    // modes: Array<{
+    //     modeId: string
+    //     name: string
+    //   }>; 
     name: string;
+    // remote: boolean;
     variableIds: string[];
 }
