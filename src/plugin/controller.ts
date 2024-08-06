@@ -1,12 +1,6 @@
 import { ExtractTokensMessage, VariableCollection } from '../types/tokenTypes';
 import { extractTokens, prepareFiles } from '../app/utils/tokenUtils';
-import { createZip } from '../app/utils/zipUtils';
-// Testing Jotai outside React
-// import myStore from '../jotai/store';
-// import * as Atoms from '../jotai/atoms'
-
-// Testing Jotai Outside React
-// const caseStyleState = myStore.get(atoms.caseStyleAtom);
+// import { createZip } from '../app/utils/zipUtils';
 
 
 if (figma.editorType === 'figma') {
@@ -15,17 +9,20 @@ if (figma.editorType === 'figma') {
   figma.ui.onmessage = async (msg: ExtractTokensMessage) => {
     try {
       if (msg.type === 'extract-tokens') {
-        const { caseStyle, singleFile, format, collections } = msg.data!;
-        const tokens = await extractTokens(caseStyle, singleFile, collections, format);
+        const { caseStyle, singleFile, format, collections, allCollections } = msg.data!;
+        // console.log("singleFile boolean value: ", singleFile);
+        const tokens = await extractTokens(caseStyle, singleFile, collections, allCollections, format);
         const files = prepareFiles(tokens, singleFile, format);
         figma.ui.postMessage({ type: 'update-preview', files });
 
+
+
       } else if (msg.type === 'trigger-download') {
-        const { caseStyle, singleFile, format, collections } = msg.data!;
-        const tokens = await extractTokens(caseStyle, singleFile, collections, format);
-        const files = prepareFiles(tokens, singleFile, format);
-        const zipFile = await createZip(files);
-        figma.ui.postMessage({ type: 'download-zip', zipFile });
+        // const { caseStyle, singleFile, format, collections } = msg.data!;
+        // const tokens = await extractTokens(caseStyle, singleFile, collections, format);
+        // const files = prepareFiles(tokens, singleFile, format);
+        // const zipFile = await createZip(files);
+        // figma.ui.postMessage({ type: 'download-zip', zipFile });
 
       } else if (msg.type === 'cancel') {
         figma.closePlugin();
@@ -57,8 +54,6 @@ async function loadCollections() {
       name: collection.name,
       variableIds: collection.variableIds
     }))
-    // myStore.set(Atoms.allCollectionsAtom, serializedCollections);
-    // console.log("Collections in Jotai store: ", myStore.get(Atoms.allCollectionsAtom));
     figma.ui.postMessage({ type: 'collections-loaded', collections: serializedCollections });
   } catch (error) {
     console.error('Error loading collections:', error);

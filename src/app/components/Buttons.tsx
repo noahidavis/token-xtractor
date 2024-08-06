@@ -1,9 +1,11 @@
 import React from 'react';
 import { 
   selectedCollectionsAtom,
-  caseStyleAtom 
+  caseStyleAtom,
+  // allCollectionsAtom
 } from '../../jotai/atoms';
 import { useAtomValue } from 'jotai';
+// import useStore from '../zustand/useStore';
 
 interface ButtonsProps {
   // caseStyle: string;
@@ -20,21 +22,7 @@ const Buttons: React.FC<ButtonsProps> = ({
 }) => {
   const selectedCollections = useAtomValue(selectedCollectionsAtom);
   const caseStyle = useAtomValue(caseStyleAtom);
-
-  const handleExtractTokens = () => {
-    console.log("Collections selected for extraction: ", selectedCollections);
-    parent.postMessage({
-      pluginMessage: {
-        type: 'extract-tokens',
-        data: {
-          caseStyle,
-          singleFile,
-          format,
-          collections: selectedCollections,
-        },
-      },
-    }, '*');
-  };
+  // const allCollections = useAtomValue(allCollectionsAtom);
 
   const handleTriggerDownload = () => {
     parent.postMessage({
@@ -60,7 +48,7 @@ const Buttons: React.FC<ButtonsProps> = ({
 
   return (
     <div className="buttons-container">
-      <button onClick={handleExtractTokens}>Extract Tokens</button>
+      {/* <button onClick={handleExtractTokens}>Extract Tokens</button> */}
       <button onClick={handleTriggerDownload}>Download Tokens</button>
       <button onClick={handleCancel}>Cancel</button>
       <button onClick={handleRefreshCollections}>Refresh</button>

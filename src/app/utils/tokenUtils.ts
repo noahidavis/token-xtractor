@@ -1,12 +1,9 @@
 import { VariableToken, FileContent, CaseStyle, ExportFormat, VariableCollection } from '../../types/tokenTypes';
 import { resolveValue, formatName, convertToCSSVariables, assignNestedValue } from './valueUtils';
-import * as Atoms  from '../../jotai/atoms';
-import myStore from '../../jotai/store';
 
 
-export async function extractTokens(caseStyle: CaseStyle, singleFile: boolean, collections: string[], format: ExportFormat): Promise<VariableToken[]> {
-    const allCollections = myStore.get(Atoms.allCollectionsAtom)!
-    console.log("All collections pulled  by extractTokens(): ", allCollections);
+export async function extractTokens(caseStyle: CaseStyle, singleFile: boolean, collections: string[], allCollections: VariableCollection[], format: ExportFormat): Promise<VariableToken[]> {
+    console.log("All collections by extractTokens(): ", allCollections);
     const selectedCollections = collections.indexOf('all') > -1 ? allCollections : allCollections.filter(collection => collections.indexOf(collection.id) > -1);
     let tokens: VariableToken[] = [];
 

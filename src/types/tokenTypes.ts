@@ -5,6 +5,7 @@ export interface ExtractTokensMessage {
         singleFile: boolean;
         format: ExportFormat;
         collections: string[];
+        allCollections: VariableCollection[];
     };
 }
 

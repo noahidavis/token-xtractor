@@ -9,12 +9,16 @@ By [Noah I. Davis](https://www.noahidavis.com)
 - Basic UI layout ported over from old project
 - Fixed variable collection names not populating on plugin start (added delay)
 - Fixed CollectionSelector select multiple functionality
-- Selected tokens + tabs appear in preview pane in JSON format only
+- All variable collections appearing in preview pane on plugin run
+- Integrated jotai + logic for updating preview based on settings
 - Zip folder created + download dialog
 
 ### Need to Do
-1. Displaying all tokens on plugin run
-2. Fix case style dropdown, single file checkbox, and JSON/CSS radio--changes not being reflected in preview pane
-3. Help modal (content + layout) + Fix help modal button positioning
-4. Overall styling / layout
-5. Debugging
+1. Help modal (content + layout) + Fix help modal button positioning + Jotai state
+2. Refresh button functionality + jotai state
+3. Overall styling / layout
+   - "Remove" 'token-x-tractor/' from tabs
+   - Apply Figma styling
+   - Buttons spacing btw + spacing btw other settings elements
+4. Debugging + removing console.logs()
+   - Consider removing Select All / Deselect all now that all collections are pulled on plugin run

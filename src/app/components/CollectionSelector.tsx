@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { allCollectionsAtom, selectedCollectionsAtom } from '../../jotai/atoms';
 
 const CollectionSelector: React.FC = () => {
-    const [allCollections] = useAtom(allCollectionsAtom);
+    const allCollections = useAtomValue(allCollectionsAtom);
     const [selectedCollections, setSelectedCollections] = useAtom(selectedCollectionsAtom);
     const [allSelected, setAllSelected] = useState<boolean>(false);
 
