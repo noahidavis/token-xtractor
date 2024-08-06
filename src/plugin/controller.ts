@@ -1,6 +1,6 @@
 import { ExtractTokensMessage, VariableCollection } from '../types/tokenTypes';
 import { extractTokens, prepareFiles } from '../app/utils/tokenUtils';
-// import { createZip } from '../app/utils/zipUtils';
+import { createZip } from '../app/utils/zipUtils';
 
 
 if (figma.editorType === 'figma') {
@@ -18,11 +18,12 @@ if (figma.editorType === 'figma') {
 
 
       } else if (msg.type === 'trigger-download') {
-        // const { caseStyle, singleFile, format, collections } = msg.data!;
-        // const tokens = await extractTokens(caseStyle, singleFile, collections, format);
-        // const files = prepareFiles(tokens, singleFile, format);
-        // const zipFile = await createZip(files);
-        // figma.ui.postMessage({ type: 'download-zip', zipFile });
+        // * Integrate back in, commented out to add in add'l params from client jotai state for 'extract-tokens'
+        const { caseStyle, singleFile, format, collections, allCollections } = msg.data!;
+        const tokens = await extractTokens(caseStyle, singleFile, collections, allCollections, format);
+        const files = prepareFiles(tokens, singleFile, format);
+        const zipFile = await createZip(files);
+        figma.ui.postMessage({ type: 'download-zip', zipFile });
 
       } else if (msg.type === 'cancel') {
         figma.closePlugin();

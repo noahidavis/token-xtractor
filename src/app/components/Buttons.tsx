@@ -2,27 +2,19 @@ import React from 'react';
 import { 
   selectedCollectionsAtom,
   caseStyleAtom,
-  // allCollectionsAtom
+  allCollectionsAtom,
+  singleFileAtom,
+  exportFormatAtom
 } from '../../jotai/atoms';
 import { useAtomValue } from 'jotai';
-// import useStore from '../zustand/useStore';
 
-interface ButtonsProps {
-  // caseStyle: string;
-  singleFile: boolean;
-  format: string;
-  // selectedCollections: string[];
-}
 
-const Buttons: React.FC<ButtonsProps> = ({ 
-  // caseStyle, 
-  singleFile, 
-  format, 
-  // selectedCollections 
-}) => {
+const Buttons: React.FC = () => {
   const selectedCollections = useAtomValue(selectedCollectionsAtom);
+  const allCollections = useAtomValue(allCollectionsAtom);
   const caseStyle = useAtomValue(caseStyleAtom);
-  // const allCollections = useAtomValue(allCollectionsAtom);
+  const singleFile = useAtomValue(singleFileAtom);
+  const format = useAtomValue(exportFormatAtom);
 
   const handleTriggerDownload = () => {
     parent.postMessage({
@@ -33,6 +25,7 @@ const Buttons: React.FC<ButtonsProps> = ({
           singleFile,
           format,
           collections: selectedCollections,
+          allCollections: allCollections
         },
       },
     }, '*');

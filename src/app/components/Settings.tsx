@@ -25,14 +25,9 @@ const Settings: React.FC = () => {
                     <input type="radio" id="css" name="format" value="css" checked={format === 'css'} onChange={(e) => setFormat(e.target.value as ExportFormat)} />
                     <label htmlFor="css">CSS</label>
                 </p>
-                <CollectionSelector
-                    // collections={collections}
-                />
+                <CollectionSelector />
             </div>
-            <Buttons 
-                singleFile={singleFile} 
-                format={format} 
-            />
+            <Buttons />
         </div>
     );
 };
