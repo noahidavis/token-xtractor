@@ -3,8 +3,13 @@
   height: 100%;
 }
 
+#plugin-title {
+  color: var(--figma-color-text)
+}
+
 #left-pane {
   width: 45%;
+  margin-right: 8px
 }
 
 #right-pane {
@@ -49,10 +54,37 @@
   cursor: pointer;
 }
 
-#buttons {
+#buttons-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 16px;
   margin-top: 10px;
+}
+
+#secondary-buttons-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  gap: 12px;
+}
+
+.primary-button {
+  padding: 10px 10px;
+  /* border-radius: 5px */
+}
+
+.secondary-button {
+  /* background-color: transparent; */
+  padding: 10px 10px;
+  /* color: var(--figma-color-text-brand) */
+}
+
+#download-button {
+  /* background-color: var(--figma-color-bg-brand); */
+  /* color: var(--figma-color-text-onbrand); */
+  height: auto;
+  width: 100%;
 }
 
 
@@ -80,6 +112,7 @@
 }
 
 #tab-contents {
+  background-color: var(--figma-color-bg-inverse);
   overflow-y: auto;
   flex-grow: 1;
 }

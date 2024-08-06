@@ -40,10 +40,12 @@ const Buttons: React.FC = () => {
   };
 
   return (
-    <div className="buttons-container">
-      <button onClick={handleTriggerDownload}>Download Tokens</button>
-      <button onClick={handleCancel}>Cancel</button>
-      <button onClick={handleRefreshCollections}>Refresh</button>
+    <div id="buttons-container">
+      <button id="download-button" className="primary-button" onClick={handleTriggerDownload}>Download Tokens</button>
+      <div id="secondary-buttons-container">
+        <button id="cancel-button" className="secondary-button" onClick={handleCancel}>Cancel</button>
+        <button id="refresh-button" className="secondary-button" onClick={handleRefreshCollections}>Refresh</button>
+      </div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { createZip } from '../app/utils/zipUtils';
 
 
 if (figma.editorType === 'figma') {
-  figma.showUI(__html__, { width: 700, height: 600 });
+  figma.showUI(__html__, { width: 700, height: 600, themeColors: false });
 
   figma.ui.onmessage = async (msg: ExtractTokensMessage) => {
     try {

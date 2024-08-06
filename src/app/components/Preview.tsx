@@ -22,6 +22,10 @@ const Preview: React.FC<PreviewProps> = ({ files }) => {
         }
     }, [files]);
 
+    const getTabDisplayName = (name: string) => {
+        return name.replace('token-x-tractor-exports/', '')
+    };
+
 
     React.useEffect(() => {
         const collectionIdsToPreview = selectedCollectionsIds?.length ? selectedCollectionsIds : allCollections?.map(c => c.id);
@@ -50,7 +54,7 @@ const Preview: React.FC<PreviewProps> = ({ files }) => {
                         className={`tab ${file.name === activeTab ? 'active' : ''}`}
                         onClick={() => setActiveTab(file.name)}
                     >
-                        {file.name}
+                        {getTabDisplayName(file.name)}
                     </div>
                 ))}
             </div>
