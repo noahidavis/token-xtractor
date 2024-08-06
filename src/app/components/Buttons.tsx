@@ -41,7 +41,6 @@ const Buttons: React.FC = () => {
 
   return (
     <div className="buttons-container">
-      {/* <button onClick={handleExtractTokens}>Extract Tokens</button> */}
       <button onClick={handleTriggerDownload}>Download Tokens</button>
       <button onClick={handleCancel}>Cancel</button>
       <button onClick={handleRefreshCollections}>Refresh</button>

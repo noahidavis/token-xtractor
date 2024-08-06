@@ -10,7 +10,6 @@ if (figma.editorType === 'figma') {
     try {
       if (msg.type === 'extract-tokens') {
         const { caseStyle, singleFile, format, collections, allCollections } = msg.data!;
-        // console.log("singleFile boolean value: ", singleFile);
         const tokens = await extractTokens(caseStyle, singleFile, collections, allCollections, format);
         const files = prepareFiles(tokens, singleFile, format);
         figma.ui.postMessage({ type: 'update-preview', files });
@@ -18,7 +17,6 @@ if (figma.editorType === 'figma') {
 
 
       } else if (msg.type === 'trigger-download') {
-        // * Integrate back in, commented out to add in add'l params from client jotai state for 'extract-tokens'
         const { caseStyle, singleFile, format, collections, allCollections } = msg.data!;
         const tokens = await extractTokens(caseStyle, singleFile, collections, allCollections, format);
         const files = prepareFiles(tokens, singleFile, format);
@@ -39,8 +37,6 @@ if (figma.editorType === 'figma') {
     console.log('tokenXtractor started . . .');
     try {
       await loadCollectionsWithDelay();
-      // Testing Jotai outside React
-      // console.log("Jotai in controller.ts test: ", caseStyleState);
     } catch (error) {
       console.error('Error during initial loadCollections:', error);
     }
