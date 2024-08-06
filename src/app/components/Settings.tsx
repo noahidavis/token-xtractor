@@ -2,14 +2,14 @@ import React from 'react';
 import CollectionSelector from './CollectionSelector';
 import Buttons from './Buttons';
 import CaseStyleSelector from './CaseStyleSelector';
-import { singleFileAtom, exportFormatAtom } from '../../jotai/atoms';
+import { singleFileAtom, derivedExportFormatAtom } from '../../jotai/atoms';
 import { useAtom } from 'jotai';
 import { ExportFormat } from '../../types/tokenTypes';
 
 
 const Settings: React.FC = () => {
     const [singleFile, setSingleFile] = useAtom(singleFileAtom);
-    const [format, setFormat] = useAtom(exportFormatAtom);
+    const [format, setFormat] = useAtom(derivedExportFormatAtom);
 
 
     return (

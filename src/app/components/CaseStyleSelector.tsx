@@ -1,11 +1,11 @@
 import React from 'react';
-import { caseStyleAtom } from '../../jotai/atoms';
+import { derivedCaseStyleAtom } from '../../jotai/atoms';
 import { useAtom } from 'jotai';
 import { CaseStyle } from '../../types/tokenTypes';
 
 
 const CaseStyleSelector: React.FC = () => {
-    const [caseStyle, setCaseStyle] = useAtom(caseStyleAtom);
+    const [caseStyle, setCaseStyle] = useAtom(derivedCaseStyleAtom);
 
     return (
         <div>
