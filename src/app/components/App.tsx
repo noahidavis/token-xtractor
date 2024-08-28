@@ -39,7 +39,7 @@ const App: React.FC = () => {
     return (
         <div id="container">
             <div id="left-pane">
-                <h2 id="plugin-title">tokenXtractor v2</h2>
+                <h2 id="plugin-title">tokenXtractor</h2>
                 <Settings
                     // caseStyle={caseStyle}
                     // setCaseStyle={setCaseStyle}

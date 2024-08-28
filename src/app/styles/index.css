@@ -1,10 +1,20 @@
+/* Babas Neue - Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* IBM Plex Mono - Google Font */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
+
 #container {
   display: flex;
   height: 100%;
 }
 
 #plugin-title {
-  color: var(--figma-color-text)
+  color: var(--figma-color-text);
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36;
 }
 
 #left-pane {
@@ -71,12 +81,18 @@
 
 .primary-button {
   padding: 10px 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-style: normal;
   /* border-radius: 5px */
 }
 
 .secondary-button {
   /* background-color: transparent; */
   padding: 10px 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-style: normal;
   /* color: var(--figma-color-text-brand) */
 }
 
@@ -85,6 +101,7 @@
   /* color: var(--figma-color-text-onbrand); */
   height: auto;
   width: 100%;
+
 }
 
 
