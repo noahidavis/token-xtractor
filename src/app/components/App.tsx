@@ -4,16 +4,12 @@ import Preview from './Preview';
 import HelpButton from './HelpButton';
 import HelpModal from './HelpModal';
 import { downloadZip } from '../utils/zipUtils';
-import '../styles/index.css'
 import {  useSetAtom } from 'jotai';
-// import myStore from '../../jotai/store';
 import { allCollectionsAtom } from '../../jotai/atoms';
+import Header from './Header';
 
 
 const App: React.FC = () => {
-    // const [caseStyle, setCaseStyle] = React.useState<string>('kebab');
-    // const [singleFile, setSingleFile] = React.useState<boolean>(false);
-    // const [format, setFormat] = React.useState<string>('json');
     const setCollectionsAtom = useSetAtom(allCollectionsAtom);
     const [files, setFiles] = React.useState<{ name: string; content: string }[]>([]);
     const [showModal, setShowModal] = React.useState<boolean>(false);
@@ -27,7 +23,6 @@ const App: React.FC = () => {
             } else if (type == 'collections-loaded') {
                 console.log("Collections from loadCollection(): ", collections);
                 setCollectionsAtom(collections)
-                // console.log("Zustand store allCollectionsAtom set: ", varCollections);
             } else if (type == 'download-zip' && zipFile) {
                 const zipFileArray = new Uint8Array(zipFile)
                 downloadZip(zipFileArray, 'exports.zip');
@@ -39,18 +34,8 @@ const App: React.FC = () => {
     return (
         <div id="container">
             <div id="left-pane">
-                <h2 id="plugin-title">tokenXtractor</h2>
-                <Settings
-                    // caseStyle={caseStyle}
-                    // setCaseStyle={setCaseStyle}
-                    // singleFile={singleFile}
-                    // setSingleFile={setSingleFile}
-                    // format={format}
-                    // setFormat={setFormat}
-                    // collections={collections}
-                    // selectedCollections={selectedCollections}
-                    // setSelectedCollections={setSelectedCollections}
-                />
+                <Header />
+                <Settings />
             </div>
             <div id="right-pane">
                 <Preview files={files} />

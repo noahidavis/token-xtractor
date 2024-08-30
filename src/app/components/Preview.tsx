@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAtomValue } from 'jotai';
 import { allCollectionsAtom, caseStyleAtom, exportFormatAtom, selectedCollectionsAtom, singleFileAtom } from '../../jotai/atoms';
+import { Flex, Select } from '@radix-ui/themes';
 
 interface PreviewProps {
     files: { name: string; content: string }[];
@@ -14,8 +15,6 @@ const Preview: React.FC<PreviewProps> = ({ files }) => {
     const exportFormat = useAtomValue(exportFormatAtom);
     const caseStyle = useAtomValue(caseStyleAtom);
 
-
-
     React.useEffect(() => {
         if (files.length > 0) {
             setActiveTab(files[0].name);
@@ -23,9 +22,8 @@ const Preview: React.FC<PreviewProps> = ({ files }) => {
     }, [files]);
 
     const getTabDisplayName = (name: string) => {
-        return name.replace('token-x-tractor-exports/', '')
+        return name.replace('token-x-tractor-exports/', '');
     };
-
 
     React.useEffect(() => {
         const collectionIdsToPreview = selectedCollectionsIds?.length ? selectedCollectionsIds : allCollections?.map(c => c.id);
@@ -45,20 +43,26 @@ const Preview: React.FC<PreviewProps> = ({ files }) => {
         }, '*');
     }, [caseStyle, exportFormat, singleFile, allCollections, selectedCollectionsIds]);
 
+    const handleSelectChange = (value: string) => {
+        setActiveTab(value);
+    };
+
     return (
         <div id="preview">
-            <div id="tabs">
-                {files.map(file => (
-                    <div
-                        key={file.name}
-                        className={`tab ${file.name === activeTab ? 'active' : ''}`}
-                        onClick={() => setActiveTab(file.name)}
-                    >
-                        {getTabDisplayName(file.name)}
-                    </div>
-                ))}
-            </div>
-            <div id="tab-contents">
+            <Flex direction="row" gap="4" align="center" id='preview-switch'>
+                <label>Preview</label>
+                <Select.Root value={activeTab} onValueChange={handleSelectChange}>
+                    <Select.Trigger>{getTabDisplayName(activeTab)}</Select.Trigger>
+                    <Select.Content>
+                        {files.map(file => (
+                            <Select.Item key={file.name} value={file.name}>
+                                {getTabDisplayName(file.name)}
+                            </Select.Item>
+                        ))}
+                    </Select.Content>
+                </Select.Root>
+            </Flex>
+            <Flex id="tab-contents">
                 {files.map(file => (
                     <div
                         key={file.name}
@@ -67,7 +71,7 @@ const Preview: React.FC<PreviewProps> = ({ files }) => {
                         {file.content}
                     </div>
                 ))}
-            </div>
+            </Flex>
         </div>
     );
 };

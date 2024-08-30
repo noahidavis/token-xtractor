@@ -1,32 +1,22 @@
 import React from 'react';
 import CollectionSelector from './CollectionSelector';
 import Buttons from './Buttons';
+import ExportSingleFile from './ExportSingleFile';
+import ExportFormatSelector from './ExportFormatSelector';
+import { Flex } from '@radix-ui/themes';
 import CaseStyleSelector from './CaseStyleSelector';
-import { singleFileAtom, derivedExportFormatAtom } from '../../jotai/atoms';
-import { useAtom } from 'jotai';
-import { ExportFormat } from '../../types/tokenTypes';
-
 
 const Settings: React.FC = () => {
-    const [singleFile, setSingleFile] = useAtom(singleFileAtom);
-    const [format, setFormat] = useAtom(derivedExportFormatAtom);
 
 
     return (
         <div id="settings">
-            <div>
+            <Flex direction='column' gap='4'>
                 <CaseStyleSelector />
-                <p>
-                    <input type="checkbox" checked={singleFile} onChange={(e) => setSingleFile(e.target.checked)} /> Export in a single file
-                </p>
-                <p>Export Format:
-                    <input type="radio" id="json" name="format" value="json" checked={format === 'json'} onChange={(e) => setFormat(e.target.value as ExportFormat)} />
-                    <label htmlFor="json">JSON</label>
-                    <input type="radio" id="css" name="format" value="css" checked={format === 'css'} onChange={(e) => setFormat(e.target.value as ExportFormat)} />
-                    <label htmlFor="css">CSS</label>
-                </p>
+                <ExportSingleFile />
+                <ExportFormatSelector />
                 <CollectionSelector />
-            </div>
+            </Flex>
             <Buttons />
         </div>
     );

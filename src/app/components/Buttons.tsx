@@ -7,6 +7,8 @@ import {
   exportFormatAtom
 } from '../../jotai/atoms';
 import { useAtomValue } from 'jotai';
+import CustomButton from './CustomButton';
+import { Flex } from '@radix-ui/themes';
 
 
 const Buttons: React.FC = () => {
@@ -40,12 +42,12 @@ const Buttons: React.FC = () => {
   };
 
   return (
-    <div id="buttons-container">
-      <button id="download-button" className="primary-button" onClick={handleTriggerDownload}>DOWNLOAD TOKENS</button>
-      <div id="secondary-buttons-container">
-        <button id="cancel-button" className="secondary-button" onClick={handleCancel}>CANCEL</button>
-        <button id="refresh-button" className="secondary-button" onClick={handleRefreshCollections}>REFRESH</button>
-      </div>
+    <div id='buttons-container'>
+      <Flex direction='column' gap='2'>
+        <CustomButton onClick={handleTriggerDownload} text={'DOWNLOAD TOKENS'}/>
+        <CustomButton onClick={handleCancel} text={'CANCEL'} color='gray' variant='soft' />
+        <CustomButton onClick={handleRefreshCollections} text={'REFRESH'} color='gray' variant='surface' />      
+      </Flex>
     </div>
   );
 };

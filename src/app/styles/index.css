@@ -1,17 +1,30 @@
-/* Babas Neue - Google Font */
+/* Babas Neue - Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-/* IBM Plex Mono - Google Font */
+/* IBM Plex Mono - Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
+
+/* Space Grotesk - Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+
+html, body {
+  height: 100%;
+  margin: 0px 0px 0px 8px;
+  padding: 0;
+  overflow: auto;
+}
 
 #container {
   display: flex;
   height: 100%;
+  /* background-color: aqua; */
 }
 
 #plugin-title {
   color: var(--figma-color-text);
   font-family: "Bebas Neue", sans-serif;
+  margin: 4px 0px 4px 0px;
   font-weight: 400;
   font-style: normal;
   font-size: 36;
@@ -19,19 +32,19 @@
 
 #left-pane {
   width: 45%;
-  margin-right: 8px
+  margin-right: 8px;
 }
 
 #right-pane {
   width: 55%;
   border-left: 1px solid #ddd;
-  overflow-y: scroll;
+  min-height: 0;
+  height: 100%;
 }
 
 #settings {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: auto;
 }
 
@@ -65,11 +78,7 @@
 }
 
 #buttons-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 10px;
+  margin-top: 24px
 }
 
 #secondary-buttons-container {
@@ -93,17 +102,13 @@
   font-family: 'IBM Plex Mono', monospace;
   font-weight: 500;
   font-style: normal;
-  /* color: var(--figma-color-text-brand) */
 }
 
 #download-button {
-  /* background-color: var(--figma-color-bg-brand); */
-  /* color: var(--figma-color-text-onbrand); */
   height: auto;
   width: 100%;
 
 }
-
 
 #tabs {
   display: flex;
@@ -114,35 +119,39 @@
   min-height: 40px;
 }
 
-
-.tab {
-  padding: 5px 10px;
-  cursor: pointer;
-  border: 1px solid #ddd;
-  border-bottom: none;
-  margin-right: 5px;
-  flex-shrink: 0;
+#preview {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.tab.active {
-  background-color: #eee;
+#preview-switch {
+  background-color: white;
+  height: 10%;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0px 8px 8px
 }
 
 #tab-contents {
-  background-color: var(--figma-color-bg-inverse);
-  overflow-y: auto;
   flex-grow: 1;
+  overflow-y: auto; /* Enable scrolling within tab contents */
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .tab-content {
   display: none;
+  padding-left: 4px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .tab-content.active {
   display: block;
   white-space: pre-wrap;
 }
-
 #help-button {
   position: absolute;
   bottom: 40px;
@@ -159,15 +168,15 @@
 }
 
 #help-modal {
-  display: none;
-  position: fixed;
+  display: flex; /* Use flexbox to center the modal */
+  align-items: center;
+  justify-content: center;
+  position: fixed; /* Fixed positioning to prevent scrolling issues */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  align-items: center;
-  justify-content: center;
   z-index: 9999;
 }
 
@@ -176,9 +185,10 @@
   padding: 20px;
   border-radius: 5px;
   max-width: 500px;
-  max-height: 80%;
+  max-height: 80vh; /* Ensure the modal doesn't cause scrolling */
   overflow-y: auto;
 }
+
 
 #help-modal-close {
   float: right;
