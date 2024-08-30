@@ -19,7 +19,7 @@ const Header: React.FC = () => {
         <Flex gap='4' direction='row' style={styles.container}>
         <div style={styles.title}>tokenXtractor</div>
         <Badge color='orange'>
-            Beta
+            BETA
         </Badge>
         </Flex>
     )
