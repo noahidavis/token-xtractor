@@ -10,15 +10,15 @@ const Settings: React.FC = () => {
 
 
     return (
-        <div id="settings">
-            <Flex direction='column' gap='4'>
+        <Flex id="settings" direction='column' justify='between'>
+            <Flex direction='column' gap='6'>
                 <CaseStyleSelector />
                 <ExportSingleFile />
                 <ExportFormatSelector />
                 <CollectionSelector />
             </Flex>
             <Buttons />
-        </div>
+        </Flex>
     );
 };
 

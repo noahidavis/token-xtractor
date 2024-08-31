@@ -33,13 +33,15 @@ ts-node scripts/watchRadixStyles.ts
 - [x] Zip folder created + download dialog
 - [x] "Remove" 'token-x-tractor/' from tabs
 - [ ] Help Modal (content + layout) + Fix help button positioning + Jotai state
-- [ ] Refresh button functionality + Jotai state
+- [x] Refresh button functionality
+  - [x] Move to Collection Selector
 - [ ] Overall styling / layout:
   - [x] Integrate RadixUI component library
     - [x] Create automation script to monitor `@radix-ui/themes/styles.css` + update `./src/app/styles/radix.css`
-  - [ ] Review spacing and layout (specifically buttons)
+  - [x] Review spacing and layout (specifically buttons)
   - [ ] Apply techworks studio styling
 - [ ] Debugging + removing extraneous logging / code
-  - [ ] *Consider removing Select All / Deselect all now that all collections are pulled by default / on plugin run*
+  - [x] *Consider removing Select All / Deselect all now that all collections are pulled by default / on plugin run*
+  - [ ] Clean up styling (CSS file vs CSS in JS)
   
 

@@ -4,13 +4,15 @@ import { Flex, Badge } from '@radix-ui/themes';
 const Header: React.FC = () => {
     const styles = {
         container: {
-            margin: '8px 0px 4px 0px'
+            margin: '12px 0px 4px 0px',
+            borderBottom: '1px solid #ddd',
+
         },
         title: {        
             fontFamily: 'Bebas Neue',
             fontWeight: 400,
             fontStyle: 'normal',
-            fontSize: 36,
+            fontSize: 44,
         }
 
     };

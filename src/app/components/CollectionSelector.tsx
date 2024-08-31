@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
 import { allCollectionsAtom, selectedCollectionsAtom } from '../../jotai/atoms';
+import { Button, Flex } from '@radix-ui/themes';
+import { ReloadIcon } from '@radix-ui/react-icons';
 
 const CollectionSelector: React.FC = () => {
     const allCollections = useAtomValue(allCollectionsAtom);
     const [selectedCollections, setSelectedCollections] = useAtom(selectedCollectionsAtom);
-    const [allSelected, setAllSelected] = useState<boolean>(false);
 
     useEffect(() => {
-        if (allSelected && allCollections) {
+        // Automatically select all collections when the plugin loads
+        if (allCollections) {
             setSelectedCollections(allCollections.map((collection) => collection.id));
-        } else {
-            setSelectedCollections([]);
         }
-    }, [allSelected, allCollections, setSelectedCollections]);
+    }, [allCollections, setSelectedCollections]);
 
     const handleSelection = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const options = event.target.options;
@@ -26,24 +26,31 @@ const CollectionSelector: React.FC = () => {
         setSelectedCollections(selected);
     };
 
-    const handleAllChange = () => {
-        setAllSelected(!allSelected);
+    const handleRefreshCollections = () => {
+        parent.postMessage({ pluginMessage: { type: 'refresh-collections' } }, '*');
     };
 
     return (
         <div className="collection-selector">
-            <label htmlFor="collections">Collections:</label>
+            <Flex direction='column' gap='2' style={{ marginBottom: 8 }}>
+                <Flex direction='row' justify='between'>
+                    <label htmlFor="collections" className='options-label'>Collections?</label>
+                    <Button variant='ghost' color='gray' style={{ fontSize: 12, fontFamily: 'IBM Plex Mono', marginRight: 2 }} onClick={handleRefreshCollections}>
+                        <ReloadIcon />
+                        REFRESH
+                    </Button>
+                </Flex>
+                <div style={{ fontFamily: 'Space Grotesk', fontStyle: 'italic', fontWeight: 400, fontSize: 12.64, color: 'slate' }}>All variable collections are selected by default. Choose below to override. Click 'REFRESH' to reset</div>
+            </Flex>
             <select
                 id="collections"
+                className='options-content'
                 multiple
                 value={selectedCollections}
                 onChange={handleSelection}
                 style={{ display: 'block', width: '100%', height: '150px' }}
             >
-                <option value="all" onClick={handleAllChange}>
-                    {allSelected ? "Deselect All" : "Select All"}
-                </option>
-                {allCollections == undefined? (
+                {allCollections == undefined ? (
                     <option disabled>Loading collections...</option>
                 ) : (
                     allCollections.map((collection) => (

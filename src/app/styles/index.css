@@ -2,39 +2,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 /* IBM Plex Mono - Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 /* Space Grotesk - Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
 
-
+/* Plugin window base styling => ensuring plugin takes up full window + does not overflow */
 html, body {
   height: 100%;
-  margin: 0px 0px 0px 8px;
+  margin: 0px 0px 0px 4px;
   padding: 0;
   overflow: auto;
 }
 
+/* Plugin content wrapper */
 #container {
   display: flex;
   height: 100%;
-  /* background-color: aqua; */
 }
 
-#plugin-title {
-  color: var(--figma-color-text);
-  font-family: "Bebas Neue", sans-serif;
-  margin: 4px 0px 4px 0px;
-  font-weight: 400;
+/* Font styling for options / settings labels */
+.options-label {
+  font-family: 'Space Grotesk', sans-serif;
   font-style: normal;
-  font-size: 36;
+  font-weight: 500
 }
 
+/* Font styles for options / settings content */
+.options-content {
+  font-family: 'IBM Plex Mono', monospace;
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Font styles for small, secondary details or buttons */
+.detail {
+  font-family: 'IBM Plex Mono', monospace
+}
+
+/* Left pane (Plugin title + settings) */
 #left-pane {
   width: 45%;
-  margin-right: 8px;
+  padding-right: 8px;
 }
 
+/* Right pane (Preview select / tabs + tokens) */
 #right-pane {
   width: 55%;
   border-left: 1px solid #ddd;
@@ -42,16 +54,19 @@ html, body {
   height: 100%;
 }
 
+/* Settings container (for token extraction - case style, single file, etc. */
 #settings {
   display: flex;
   flex-direction: column;
-  height: auto;
+  height: 85%;
 }
 
+/* ! Idek if this is being used anymore */
 @keyframes spinner {
   to { transform: rotate(360deg); }
 }
 
+/* ! Not sure if this is being used anymore */
 .spinner {
   margin: 50px auto;
   width: 50px;
@@ -62,6 +77,7 @@ html, body {
   animation: spinner 0.6s linear infinite;
 }
 
+/* Variable collections container */
 #collections {
   width: 100%;
   height: 150px;
@@ -72,86 +88,55 @@ html, body {
   justify-content: center;
 }
 
-
+/* ! Not sure if this is being used anymore */
 #collections option {
   cursor: pointer;
 }
 
+/* Wrapper for Download + Close buttons */
 #buttons-container {
-  margin-top: 24px
+  border-top: 1px solid #ddd;
+  padding: 16px 0px 16px 0px
 }
 
-#secondary-buttons-container {
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  gap: 12px;
-}
-
-.primary-button {
-  padding: 10px 10px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 500;
-  font-style: normal;
-  /* border-radius: 5px */
-}
-
-.secondary-button {
-  /* background-color: transparent; */
-  padding: 10px 10px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 500;
-  font-style: normal;
-}
-
-#download-button {
-  height: auto;
-  width: 100%;
-
-}
-
-#tabs {
-  display: flex;
-  border-bottom: 1px solid #ddd;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  min-height: 40px;
-}
-
+/* Preview container (Preview select + tokens)  */
 #preview {
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin-left: 4px;
 }
 
+/* Preview dropdown menu switch */
 #preview-switch {
   background-color: white;
-  height: 10%;
+  height: 70px;
   border-bottom: 1px solid #ddd;
   padding: 8px 0px 8px 8px
 }
 
-#tab-contents {
+/* Scrolling tokens container */
+#tokens-container {
   flex-grow: 1;
   overflow-y: auto; /* Enable scrolling within tab contents */
-  padding: 10px;
+  padding: 8px;
   box-sizing: border-box;
 }
 
-.tab-content {
+/* Actual tokens rendering in preview window */
+.tokens {
   display: none;
   padding-left: 4px;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
+  font-size: 12;
 }
 
-.tab-content.active {
+/* ! Highkey do not remember why I added this */
+.tokens.active {
   display: block;
   white-space: pre-wrap;
 }
+
+/* Button to open help modal */
 #help-button {
   position: absolute;
   bottom: 40px;
@@ -167,6 +152,7 @@ html, body {
   cursor: pointer;
 }
 
+/* Help modal container */
 #help-modal {
   display: flex; /* Use flexbox to center the modal */
   align-items: center;
@@ -180,6 +166,7 @@ html, body {
   z-index: 9999;
 }
 
+/* Content wrapper for modal */
 #help-modal-content {
   background-color: white;
   padding: 20px;
@@ -189,7 +176,7 @@ html, body {
   overflow-y: auto;
 }
 
-
+/* Modal close button */
 #help-modal-close {
   float: right;
   cursor: pointer;

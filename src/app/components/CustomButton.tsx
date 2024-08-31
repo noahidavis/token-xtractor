@@ -3,12 +3,14 @@ import { Button, ButtonProps } from '@radix-ui/themes';
 
 interface CustomButtonProps extends ButtonProps {
     text: string;
+    textStyle?: object;
 }
 
-const CustomButton: React.FC<CustomButtonProps> = ({ text, ...buttonProps }) => {
+const CustomButton: React.FC<CustomButtonProps> = ({ text, textStyle, ...buttonProps }) => {
     const style: object = {
         fontFamily: 'IBM Plex Mono',
-        fontWeight: 400
+        fontWeight: 500,
+        ...textStyle
     }
 
     return (

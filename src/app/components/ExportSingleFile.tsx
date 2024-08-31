@@ -12,7 +12,7 @@ const ExportSingleFile: React.FC = () => {
 
     return (
         <Flex gap='4' direction='row'>
-            <label>
+            <label className='options-label'>
                 Export Single File?
             </label>
             <Switch checked={singleFile} onCheckedChange={handleSwitchToggle}/>

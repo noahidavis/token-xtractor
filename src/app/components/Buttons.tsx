@@ -37,16 +37,11 @@ const Buttons: React.FC = () => {
     parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*');
   };
 
-  const handleRefreshCollections = () => {
-    parent.postMessage({ pluginMessage: { type: 'refresh-collections' } }, '*');
-  };
-
   return (
     <div id='buttons-container'>
-      <Flex direction='column' gap='2'>
+      <Flex direction='column' gap='4'>
         <CustomButton onClick={handleTriggerDownload} text={'DOWNLOAD TOKENS'}/>
-        <CustomButton onClick={handleCancel} text={'CANCEL'} color='gray' variant='soft' />
-        <CustomButton onClick={handleRefreshCollections} text={'REFRESH'} color='gray' variant='surface' />      
+        <CustomButton onClick={handleCancel} text={'CLOSE'} color='gray' variant='soft' />    
       </Flex>
     </div>
   );

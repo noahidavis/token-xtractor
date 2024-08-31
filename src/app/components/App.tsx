@@ -7,6 +7,7 @@ import { downloadZip } from '../utils/zipUtils';
 import {  useSetAtom } from 'jotai';
 import { allCollectionsAtom } from '../../jotai/atoms';
 import Header from './Header';
+import { Flex } from '@radix-ui/themes';
 
 
 const App: React.FC = () => {
@@ -33,10 +34,10 @@ const App: React.FC = () => {
 
     return (
         <div id="container">
-            <div id="left-pane">
+            <Flex id="left-pane" direction='column' gap='4'>
                 <Header />
                 <Settings />
-            </div>
+            </Flex>
             <div id="right-pane">
                 <Preview files={files} />
             </div>
