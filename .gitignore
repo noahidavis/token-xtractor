@@ -12,3 +12,6 @@ code.js
 
 # VSCode
 .vscode/
+
+# Copied Radix CSS
+**/*/radix.css
