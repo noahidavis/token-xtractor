@@ -1,4 +1,7 @@
 import React from 'react';
+import HelpModalTabs from './HelpModalTabs';
+import { Flex } from '@radix-ui/themes';
+import { Cross2Icon } from '@radix-ui/react-icons';
 
 interface HelpModalProps {
     showModal: boolean;
@@ -6,14 +9,24 @@ interface HelpModalProps {
 }
 
 const HelpModal: React.FC<HelpModalProps> = ({ showModal, setShowModal }) => {
+    const styles = {
+        title: {        
+            fontFamily: 'Bebas Neue',
+            fontWeight: 400,
+            fontStyle: 'normal',
+            fontSize: 44,
+        }
+    };
+
     return (
         <div id="help-modal" style={{ display: showModal ? 'flex' : 'none' }}>
             <div id="help-modal-content">
-                <span id="help-modal-close" onClick={() => setShowModal(false)}>
-                    &times;
-                </span>
-                <h2>Help</h2>
+                <Flex direction='row' justify='between'>
+                    <div style={styles.title}>Support</div>
+                    <Cross2Icon id='help-modal-close' onClick={() => setShowModal(false)}/>
+                </Flex>
                 <p>This is the help modal content.</p>
+                <HelpModalTabs />
             </div>
         </div>
     );

@@ -12,7 +12,7 @@ const Header: React.FC = () => {
             fontFamily: 'Bebas Neue',
             fontWeight: 400,
             fontStyle: 'normal',
-            fontSize: 44,
+            fontSize: 48,
         }
 
     };

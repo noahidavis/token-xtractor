@@ -7,7 +7,8 @@ import { downloadZip } from '../utils/zipUtils';
 import {  useSetAtom } from 'jotai';
 import { allCollectionsAtom } from '../../jotai/atoms';
 import Header from './Header';
-import { Flex } from '@radix-ui/themes';
+import { Flex, IconButton } from '@radix-ui/themes';
+import { QuestionMarkIcon } from '@radix-ui/react-icons';
 
 
 const App: React.FC = () => {
@@ -41,7 +42,10 @@ const App: React.FC = () => {
             <div id="right-pane">
                 <Preview files={files} />
             </div>
-            <HelpButton onClick={() => setShowModal(true)} />
+            {/* <HelpButton onClick={() => setShowModal(true)} /> */}
+            <IconButton id='help-button' radius='full' onClick={() => setShowModal(true)} style={{ backgroundColor: 'black' }}>
+                <QuestionMarkIcon style={{ color: 'white' }}/>
+            </IconButton>
             <HelpModal showModal={showModal} setShowModal={setShowModal} />
             <a id="download-link" style={{display: 'none'}}></a>
         </div>

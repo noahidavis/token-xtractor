@@ -58,7 +58,7 @@ html, body {
 #settings {
   display: flex;
   flex-direction: column;
-  height: 85%;
+  height: 100%;
 }
 
 /* ! Idek if this is being used anymore */
@@ -96,7 +96,7 @@ html, body {
 /* Wrapper for Download + Close buttons */
 #buttons-container {
   border-top: 1px solid #ddd;
-  padding: 16px 0px 16px 0px
+  padding: 24px 0px 24px 0px
 }
 
 /* Preview container (Preview select + tokens)  */
@@ -141,11 +141,8 @@ html, body {
   position: absolute;
   bottom: 40px;
   right: 40px;
-  background-color: #007aff;
-  color: white;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,7 +168,7 @@ html, body {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  max-width: 500px;
+  min-width: 450px;
   max-height: 80vh; /* Ensure the modal doesn't cause scrolling */
   overflow-y: auto;
 }
@@ -181,7 +178,8 @@ html, body {
   float: right;
   cursor: pointer;
   color: #aaa;
-  font-size: 20px;
+  width: 24;
+  height: 24;
 }
 
 

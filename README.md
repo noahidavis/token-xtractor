@@ -48,6 +48,7 @@ ts-node scripts/watchRadixStyles.ts
 - [ ] Tooltips where relevant
 - [ ] Debugging + removing extraneous logging / code
   - [x] *Consider removing Select All / Deselect all now that all collections are pulled by default / on plugin run*
-  - [ ] Clean up styling (CSS file vs CSS in JS)
+  - [ ] Clean up styling (CSS file, CSS in JS, Inline styles)
+    - [ ] Typography
   
 
