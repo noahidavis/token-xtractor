@@ -1,7 +1,6 @@
 import React from 'react';
 import Settings from './Settings';
 import Preview from './Preview';
-import HelpButton from './HelpButton';
 import HelpModal from './HelpModal';
 import { downloadZip } from '../utils/zipUtils';
 import {  useSetAtom } from 'jotai';
@@ -42,7 +41,6 @@ const App: React.FC = () => {
             <div id="right-pane">
                 <Preview files={files} />
             </div>
-            {/* <HelpButton onClick={() => setShowModal(true)} /> */}
             <IconButton id='help-button' radius='full' onClick={() => setShowModal(true)} style={{ backgroundColor: 'black' }}>
                 <QuestionMarkIcon style={{ color: 'white' }}/>
             </IconButton>
