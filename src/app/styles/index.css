@@ -35,9 +35,24 @@ html, body {
   font-weight: 400;
 }
 
+/* Font styles for normal text */
+.normal-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
 /* Font styles for small, secondary details or buttons */
 .detail {
   font-family: 'IBM Plex Mono', monospace
+}
+
+/* Font styles subheading */
+.segmented-tab-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14;
 }
 
 /* Left pane (Plugin title + settings) */
@@ -149,7 +164,7 @@ html, body {
   cursor: pointer;
 }
 
-/* Help modal container */
+/* Help modal background overlay */
 #help-modal {
   display: flex; /* Use flexbox to center the modal */
   align-items: center;
@@ -168,9 +183,9 @@ html, body {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  min-width: 450px;
-  max-height: 80vh; /* Ensure the modal doesn't cause scrolling */
-  overflow-y: auto;
+  width: 450px;
+  height: 550px;
+  overflow: hidden
 }
 
 /* Modal close button */

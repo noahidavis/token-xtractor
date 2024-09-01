@@ -25,7 +25,7 @@ const HelpModal: React.FC<HelpModalProps> = ({ showModal, setShowModal }) => {
                     <div style={styles.title}>Support</div>
                     <Cross2Icon id='help-modal-close' onClick={() => setShowModal(false)}/>
                 </Flex>
-                <p>This is the help modal content.</p>
+                {/* <p className='normal-text'>Get the 411 on tokenXtractor.</p> */}
                 <HelpModalTabs />
             </div>
         </div>
