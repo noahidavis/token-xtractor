@@ -26,8 +26,8 @@ const CollectionSelector: React.FC = () => {
         setSelectedCollections(selected);
     };
 
-    const handleRefreshCollections = () => {
-        parent.postMessage({ pluginMessage: { type: 'refresh-collections' } }, '*');
+    const handleResetCollections = () => {
+        parent.postMessage({ pluginMessage: { type: 'reset-collections' } }, '*');
     };
 
     return (
@@ -35,9 +35,9 @@ const CollectionSelector: React.FC = () => {
             <Flex direction='column' gap='2' style={{ marginBottom: 12 }}>
                 <Flex direction='row' justify='between'>
                     <label htmlFor="collections" className='options-label'>Collections?</label>
-                    <Button variant='ghost' color='gray' style={{ fontSize: 12, fontFamily: 'IBM Plex Mono', marginRight: 2 }} onClick={handleRefreshCollections}>
+                    <Button variant='ghost' color='gray' style={{ fontSize: 12, fontFamily: 'IBM Plex Mono', marginRight: 2 }} onClick={handleResetCollections}>
                         <ReloadIcon />
-                        REFRESH
+                        RESET
                     </Button>
                 </Flex>
                 <Flex direction='row' gap='2' align='start'>

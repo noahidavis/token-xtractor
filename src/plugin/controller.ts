@@ -25,7 +25,7 @@ if (figma.editorType === 'figma') {
 
       } else if (msg.type === 'cancel') {
         figma.closePlugin();
-      } else if (msg.type === 'refresh-collections') {
+      } else if (msg.type === 'reset-collections') {
         await loadCollections();
       }
     } catch (error) {

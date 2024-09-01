@@ -10,18 +10,6 @@ const Settings: React.FC = () => {
 
 
     return (
-        // <Flex id="settings" direction='column' justify='between'>
-        //     <Flex direction='column' gap='4'>
-        //         <div style={{ fontFamily: 'Space Grotesk', fontSize: 16, fontWeight: 400 }}>Choose from the settings below:</div>
-        //         <Flex direction='column' gap='4'>
-        //             <CaseStyleSelector />
-        //             <ExportSingleFile />
-        //             <ExportFormatSelector />
-        //             <CollectionSelector />
-        //         </Flex>
-        //     </Flex>
-        //     <Buttons />
-        // </Flex>
         <Flex id="settings" direction='column' justify='between'>
             <Flex direction='column' gap='6'>
                 <CaseStyleSelector />

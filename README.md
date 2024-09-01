@@ -21,6 +21,10 @@ npm build:watch
 ```bash
 ts-node scripts/watchRadixStyles.ts
 ```
+Or
+```bash
+npm run watch:radix
+```
 
 
 ### To-Do

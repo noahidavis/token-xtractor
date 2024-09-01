@@ -1,5 +1,5 @@
 export interface ExtractTokensMessage {
-    type: 'extract-tokens' | 'trigger-download' | 'cancel' | 'refresh-collections';
+    type: 'extract-tokens' | 'trigger-download' | 'cancel' | 'reset-collections';
     data?: {
         caseStyle: CaseStyle;
         singleFile: boolean;
