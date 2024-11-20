@@ -7,17 +7,17 @@ By [Noah I. Davis](https://www.noahidavis.com)
 TypeScript.
 
 ### Development
-#### To start hot-reloading in Figma:
 
-
+#### Install
 ```bash
-npm build:watch
+npm install
 ```
-*Alternatively:*
-1. Enter:  `CMD + Shift + B`
-2. Select 'npm build: watch' / 'webpack --mode=development --watch'  
 
-#### To start `watchRadixStyles` script:
+#### Start `watchRadixStyles` script in terminal:
+```bash
+npx ts-node scripts/watchRadixStyles.ts
+```
+Or
 ```bash
 ts-node scripts/watchRadixStyles.ts
 ```
@@ -25,6 +25,14 @@ Or
 ```bash
 npm run watch:radix
 ```
+#### Start hot-reloading in Figma on another terminal:
+
+```bash
+npm run build:watch
+```
+*Alternatively:*
+1. Enter:  `CMD + Shift + B`
+2. Select 'npm build: watch' / 'webpack --mode=development --watch'  
 
 
 ### To-Do
