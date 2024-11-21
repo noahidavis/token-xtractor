@@ -26,7 +26,7 @@ function formatResolvedValue(value: VariableValue, resolvedType: string): string
 }
 
 export function convertToCSSVariables(tokens: { name: string, value: string | number }[]): string {
-    return tokens.map(token => `--${token.name}: ${token.value};`).join('\n');
+    return `:root {\n${tokens.map(token => `  --${token.name}: ${token.value};`).join('\n')}\n}`;
 }
 
 export function assignNestedValue(obj: any, keys: string[], value: any): void {
