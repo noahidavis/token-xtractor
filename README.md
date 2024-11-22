@@ -45,7 +45,7 @@ npm run build:watch
 - [x] Zip folder created + download dialog
 - [x] "Remove" 'token-x-tractor/' from tabs
 - [ ] Help Modal (content + layout) + Fix help button positioning + Jotai state
-  - [ ] About + socials
+  - [x] About + socials
   - [ ] Features / How to use
   - [ ] New feature + bug form submission
 - [x] Refresh button functionality

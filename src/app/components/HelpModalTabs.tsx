@@ -14,7 +14,8 @@ const HelpModalTabs: React.FC = () => {
                 <Box className='normal-text' pt="3" pr='6'>
                     <Tabs.Content  value="quick-start">
                         {/* Content Wrapper */}
-                        <Flex direction='column' gap='4'>
+                        <Flex direction='column' gap='3'>
+                            <Text className='options-label' size='3'>Getting Started</Text>
                             {/* Intro */}
                             <Text size='2'>tokenXtractor is a Figma plugin thoughtfully crafted to make exporting local variables, or tokens, easy and accessible. Its usage is fairly straightforward: configure your options, select your collections, and then download them.</Text>
                             {/* Configure options content */}
