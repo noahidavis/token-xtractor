@@ -49,17 +49,21 @@ const Preview: React.FC<PreviewProps> = ({ files }) => {
 
     return (
         <div id="preview">
-            <Flex direction="row" gap="4" align="center" id='preview-switch'>
-                <label className='options-label'>Previewing</label>
-                <Select.Root value={activeTab} onValueChange={handleSelectChange}>
-                    <Select.Trigger className='options-content'>{getTabDisplayName(activeTab)}</Select.Trigger>
-                    <Select.Content className='options-content'>
-                        {files.map(file => (
-                            <Select.Item key={file.name} value={file.name}>
-                                {getTabDisplayName(file.name)}
-                            </Select.Item>
-                        ))}
-                    </Select.Content>
+            <Flex direction="row" gap="4" align="center" id="preview-switch">
+                <label className="options-label">Previewing</label>
+                <Select.Root value={files.length > 0 ? activeTab : "none"} onValueChange={handleSelectChange}>
+                    <Select.Trigger className="options-content" disabled={files.length === 0}>
+                        {files.length > 0 ? getTabDisplayName(activeTab) : "none"}
+                    </Select.Trigger>
+                    {files.length > 0 && (
+                        <Select.Content className="options-content">
+                            {files.map(file => (
+                                <Select.Item key={file.name} value={file.name}>
+                                    {getTabDisplayName(file.name)}
+                                </Select.Item>
+                            ))}
+                        </Select.Content>
+                    )}
                 </Select.Root>
             </Flex>
             <Flex id="tokens-container">
