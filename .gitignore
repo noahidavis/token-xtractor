@@ -15,3 +15,6 @@ code.js
 
 # Copied Radix CSS
 **/*/radix.css
+
+# Yarn
+.yarn/
