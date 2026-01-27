@@ -13,6 +13,8 @@ export interface VariableToken {
     name: string;
     value: string | number;
     collection: string;
+    modeId: string;
+    modeName: string;
 }
 
 export interface FileContent {
@@ -45,13 +47,13 @@ export interface VariableAlias {
 
 export interface VariableCollection {
     id: string;
-    // defaultModeId: string;
+    defaultModeId: string;
     // hiddenFromPublishing: boolean;
     // key: string;
-    // modes: Array<{
-    //     modeId: string
-    //     name: string
-    //   }>; 
+    modes: Array<{
+        modeId: string
+        name: string
+    }>;
     name: string;
     // remote: boolean;
     variableIds: string[];
