@@ -9,9 +9,12 @@ if (figma.editorType === 'figma') {
   figma.ui.onmessage = async (msg: ExtractTokensMessage) => {
     try {
       if (msg.type === 'extract-tokens') {
+        // ! Debug
+        console.log('Controller received extract-tokens', msg.data);
+
         const { caseStyle, singleFile, format, collections, allCollections } = msg.data!;
         const tokens = await extractTokens(caseStyle, singleFile, collections, allCollections, format);
-        const files = prepareFiles(tokens, singleFile, format);
+        const files = prepareFiles(tokens, singleFile, format, caseStyle);
         figma.ui.postMessage({ type: 'update-preview', files });
 
 
@@ -19,7 +22,7 @@ if (figma.editorType === 'figma') {
       } else if (msg.type === 'trigger-download') {
         const { caseStyle, singleFile, format, collections, allCollections } = msg.data!;
         const tokens = await extractTokens(caseStyle, singleFile, collections, allCollections, format);
-        const files = prepareFiles(tokens, singleFile, format);
+        const files = prepareFiles(tokens, singleFile, format, caseStyle);
         const zipFile = await createZip(files);
         figma.ui.postMessage({ type: 'download-zip', zipFile });
 
@@ -49,7 +52,9 @@ async function loadCollections() {
     const serializedCollections = collections.map(collection => ({
       id: collection.id,
       name: collection.name,
-      variableIds: collection.variableIds
+      variableIds: collection.variableIds,
+      modes: collection.modes,
+      defaultModeId: collection.defaultModeId,
     }))
     figma.ui.postMessage({ type: 'collections-loaded', collections: serializedCollections });
   } catch (error) {
