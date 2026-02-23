@@ -17,7 +17,7 @@ const HelpModalTabs: React.FC = () => {
                         <Flex direction='column' gap='3'>
                             <Text className='options-label' size='3'>Getting Started</Text>
                             {/* Intro */}
-                            <Text size='2'>tokenXtractor is a Figma plugin thoughtfully crafted to make exporting local variables, or tokens, easy and accessible. Its usage is fairly straightforward: configure your options, select your collections, and then download them.</Text>
+                            <Text size='2'>tokenXtractor is a Figma plugin thoughtfully crafted to make exporting local variables, or tokens, easy and accessible. Its usage is fairly straightforward: configure your options, select the variable modes you want to export (grouped by collection), and then download them.</Text>
                             {/* Configure options content */}
                             <Flex direction='column' gap='3'>
                                 <Text className='options-label' size='3'>
@@ -34,17 +34,17 @@ const HelpModalTabs: React.FC = () => {
                             {/* Select collections content */}
                             <Flex direction='column' gap='3'>
                                 <Text className='options-label' size='3'>
-                                    2) Select your collections
+                                    2) Select your collections + modes
                                 </Text>
                                 <Flex direction='column' gap='2'>
                                     <Text size='2'>
-                                        All collections are selected by default, so if you would like to export all your collections, you can skip this step. Otherwise, click on the variable collection name to select / deselect it for export.
+                                        All variable modes across all collections are selected by default, so if you would like to export everything, you can skip this step. The list is grouped by collection, and you can select or deselect specific modes for export.
                                     </Text>
                                     <Text size='2'>
-                                        You can select multiple using <Code>CMD + Click</Code> (MacOS) or <Code>CTRL + Click</Code> (Windows). To select a range, click the first collection and then <Code>SHIFT + Click</Code> the last collection.
+                                        You can select multiple modes using <Code>CMD + Click</Code> (MacOS) or <Code>CTRL + Click</Code> (Windows). To select a range, click the first mode and then <Code>SHIFT + Click</Code> the last mode.
                                     </Text>
                                     <Text size='2'>
-                                        You can undo your selection by clicking the 'RESET' button next to 'Collections?'
+                                        Click the 'RESET' button next to 'Collections?' to restore the default selection (all variable modes across all collections).
                                     </Text>
                                 </Flex>
                             </Flex>
@@ -62,7 +62,7 @@ const HelpModalTabs: React.FC = () => {
                                 <Text className='options-label' size='3'>Previewing + Misc. Tips</Text>
                                 <Flex direction='column' gap='2'>
                                     <Text size='2'>
-                                        The right half of the plugin contains a 'preview' of the tokens to be exported. When exporting multiple files, you can use the dropdown menu next to 'Previewing' to switch the collection you're viewing. (Copy to clipboard coming soon)
+                                        The right half of the plugin contains a 'preview' of the tokens to be exported. When exporting multiple files, you can use the dropdown menu next to 'Previewing' to switch the export file you're viewing. (Copy to clipboard coming soon)
                                     </Text>
                                 </Flex>
                             </Flex>
