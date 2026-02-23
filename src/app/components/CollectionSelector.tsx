@@ -47,6 +47,11 @@ const CollectionSelector: React.FC = () => {
     };
 
     const handleResetCollections = () => {
+        if (allCollections) {
+            setSelectedCollections(buildDefaultSelections(allCollections));
+        } else {
+            setSelectedCollections([]);
+        }
         parent.postMessage({ pluginMessage: { type: 'reset-collections' } }, '*');
     };
 
